@@ -1,111 +1,114 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="ISO-8859-1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../login.css" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&amp;display=swap" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../login.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+	<title>Login Page</title>
+    <script>
+        function verify()
+        {
+            //storing the email input in the email variable
+		    var email = document.getElementById("email").value;
+		    if (email == "") 
+            {
+                alert("Please Enter email!");
+			    return false;
+		    } 
+            else if (email.includes(" ")) 
+            {
+                alert("Please Enter email Properly!");
+			    return false;
+		    } 
+            else if (!email.includes("@")) 
+            {
+                alert("Please Enter email Properly!");
+			    return false;
+		    }
+        
+            //storing the password input in the password variable
+		    var password = document.getElementById("password").value;
+            if (password == "") 
+            {
+                alert("Please Enter password!");
+                return false;
+            }
+            const usr_input = document.getElementById("submit").value;
+	
+	        // Check whether the input is equal
+	        if (usr_input != captcha.innerHTML)
+            {
+                alert("Captha Not Matched!");
+                generate();
+                return false;
+	        }
+        }
+        var captcha;
+        function generate()
+        {
+	        // Clear old input
+	        document.getElementById("submit").value = "";
 
-<title>Login Page</title>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
-	function verify() {
-		//storing the email input in the email variable
-		var email = document.getElementById("email").value;
-		if (email == "") {
-			document.getElementById("emailmsg").innerHTML = "Please Enter email!";
-			return false;
-		} else if (email.includes(" ")) {
-			document.getElementById("emailmsg").innerHTML = "Please Enter email Properly!";
-			return false;
-		} else if (!email.includes("@")) {
-			document.getElementById("emailmsg").innerHTML = "Please Enter email Properly!";
-			return false;
-		}
+	        // Access the element to store
+	        // the generated captcha
+	        captcha = document.getElementById("image");
+	        var uniquechar = "";
 
-		//storing the password input in the password variable
-		var password = document.getElementById("password").value;
-		if (password == "") {
-			document.getElementById("passwordmsg").innerHTML = "Please Enter password!";
-			return false;
-		}
+	        const randomchar ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-		var cap = document.getElementById("txtCompare").value;
-		var txtcap = document.getElementById("txtCaptcha").value;
-		var ncap = txtcap.split(' ').join('');
+	        // Generate captcha for length of
+	        // 5 with random character
+	        for (let i = 1; i < 7; i++)
+            {
+		        uniquechar += randomchar.charAt(Math.random() * randomchar.length)
+	        }
 
-		if (cap == "") {
-			document.getElementById("captchemsg").innerHTML = "Enter Captche!";
-			return false;
-		}
-		if (cap != ncap) {
-			document.getElementById("captchemsg").innerHTML = "Wrong Captche!";
-			return false;
-		}
-
-		GenerateCaptcha();
-	}
-</script>
+	        // Store generated input
+	        captcha.innerHTML = uniquechar;
+        }
+    </script>
 </head>
-<body onload="GenerateCaptcha();">
-	<h3
-		style="text-align: center; color: red; font-weight: bold; margin-top: 35px;">${message}</h3>
 
-	<form onsubmit="return verify()" action="../login" method="post">
-		<div class="login-form">
-			<div class="form-title">Login</div>
-			<div class="form-input">
-				<span id="emailmsg" style="color: red"> </span> <label for="email">Email</label>
-				<input type="text" id="email" placeholder="abc@xyz.com" name="email">
-			</div>
-			<div class="form-input">
-				<span id="passwordmsg" style="color: red"> </span> <label
-					for="password">Password</label> <input type="password"
-					id="password" placeholder="Enter Password" name="password">
-			</div>
-			<div class="captcha">
-				<span id="captchemsg" style="color: red"> </span> <label
-					for="captcha-input">Enter Captcha</label>
-				<div id="preview">
-					<input class="preview" type="text" id="txtCaptcha" name="captche" />
-				</div>
-				<div class="captcha-form">
-					<input type="text" id="txtCompare" placeholder="Enter captcha text"
-						name="txtCaptche" />
-					<button class="captcha-refresh" onclick="GenerateCaptcha();">
-						<i class="fa fa-refresh"></i>
-					</button>
-				</div>
-			</div>
-			<div class="form-input">
-				<button id="login-btn">Login</button>
-			</div>
-		</div>
-	</form>
-	<script type="text/javascript">
-		/* Function to Generat Captcha */
-		function GenerateCaptcha() {
-			var chr1 = Math.ceil(Math.random() * 10) + '';
-			var chr2 = Math.ceil(Math.random() * 10) + '';
-			var chr3 = Math.ceil(Math.random() * 10) + '';
+<body onload="generate()">
+    <main>
+        <h3 style="text-align: center; color: #ebdd34; font-weight: bold; margin-top: 25px;">${message}</h3>
+        <section>
+            <form action="../login" method="post">
+                <fieldset>
+                    <legend>Login</legend>
+				    <div class="input-group">
+					    <label for="email" class="label">Email</label>
+					    <input id="email" type="text" class="input" autocomplete placeholder="Email Address" name="email">
+					</div>
 
-			var str = new Array(4).join().replace(
-					/(.|$)/g,
-					function() {
-						return ((Math.random() * 36) | 0).toString(36)[Math
-								.random() < .5 ? "toString" : "toUpperCase"]();
-					});
-			var captchaCode = str + chr1 + ' ' + chr2 + ' ' + chr3;
-			document.getElementById("txtCaptcha").value = captchaCode;
-			/* document.write(captchaCode); */
-		}
-	</script>
+                    <div class="input-group">
+					    <label for="password" class="label">Password</label>
+					    <input id="password" type="password" class="input" placeholder="" name="password">
+				    </div>
 
+                    <div class="input-group">
+                        <div id="image"  class="input" style="text-align: center;"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="input" onclick="generate();" style="text-align: center;">Refresh</i>
+                    </div>
+
+                    <div class="input-group">
+					    <input id="submit"  class="input" placeholder="Enter Captcha">	
+				    </div>
+                </fieldset>
+            <input type="submit" value="Login" onclick="return verify()">
+        
+            </form>
+        </section>
+    </main>
 </body>
+
 </html>
+    

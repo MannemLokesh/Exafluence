@@ -25,6 +25,9 @@ body {
   font-family: "Inter", sans-serif;
   /* background-color: royalblue; */
   background-image: url(signup_background.gif);
+  background-size: cover;
+  background-repeat: no-repeat; 
+  height: 740px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -103,7 +106,7 @@ form, form > *, .container, section {
   padding: 2.5em;
   border: 0.375em solid rgba(65, 105, 225, 0.75);
   border-radius: 1em;
-  background-color:rgb(255 255 255 / 77%);/*#ffffff63; /*white;*/
+  background-color:rgb(255 255 255);/*#ffffff63; /*white;*/
   transition: all 200ms;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }

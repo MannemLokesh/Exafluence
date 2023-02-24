@@ -28,7 +28,7 @@
 <style>
 body {
 	background-image:
-		url("https://shipsy.io/wp-content/uploads/2022/08/Image_1920x920-10Aug-1.jpg");
+		url("https://voyagerww.com/wp-content/uploads/2021/04/Picture1_cr.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;

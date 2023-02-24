@@ -4,7 +4,7 @@
 <html lang="en" >
 	<head>
 		<meta charset="UTF-8">
-  		<title>CodePen - Sign Up</title>
+  		<title>Sign Up Page</title>
   		<meta name="viewport" content="width=device-width, initial-scale=1">
  		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css'>
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css'>
@@ -67,7 +67,7 @@
 
 <body>
 	<main>
-	<h4 style="font-family:Georgia; text-align: center; color: #eb3440; font-weight: bold;">${message}</h4>
+	<h4 style="font-family:Georgia; text-align: center; color: #af5252; font-weight: bold;">${message}</h4>
 		<section>
 			
 			<form onsubmit="return verify()" action="signup" class="form" method="post">
