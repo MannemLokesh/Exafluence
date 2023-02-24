@@ -1,9 +1,12 @@
 package com.exfscm.controller;
 
+import java.io.FileNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.exfscm.model.UserModel;
@@ -17,7 +20,7 @@ public class AuthController
 
 	// This method will return Home Page (Sign Up Page)
 	@GetMapping("/")
-	public ModelAndView homePage()
+	public ModelAndView homePage() throws FileNotFoundException, InternalServerError
 	{
 		ModelAndView modelAndView=null;
 		try
@@ -30,14 +33,16 @@ public class AuthController
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			modelAndView = new ModelAndView();
+			modelAndView.setViewName("errorPage");
+			return modelAndView;
 		}
 		return modelAndView;
 	}
 
 	// This method will post the User Registration Data in DB
 	@PostMapping("/signup")
-	public ModelAndView signUpPage(UserModel userModel)
+	public ModelAndView signUpPage(UserModel userModel) throws FileNotFoundException, InternalServerError
 	{
 		ModelAndView modelAndView = null;
 		
@@ -59,7 +64,7 @@ public class AuthController
 			} 
 			else // If Any User Exist with the Email, It will redirect to sign up Page with a message
 			{
-				modelAndView.addObject("message", userModel.getEmail() + " is " + message + ", Please login!");
+				modelAndView.addObject("message", userModel.getEmail() + " is " + message);
 				modelAndView.setViewName("signup");
 				return modelAndView;
 			}
@@ -73,7 +78,7 @@ public class AuthController
 
 	//This method will check the Credentials of User
 	@PostMapping("/login")
-	public ModelAndView isValidUser(UserModel userModel)
+	public ModelAndView isValidUser(UserModel userModel) throws FileNotFoundException, InternalServerError
 	{
 		ModelAndView modelAndView = null;
 		
@@ -116,7 +121,7 @@ public class AuthController
 	
 	//This method is used to redirect to createShipment Page
 	@GetMapping("/shipment")
-	public ModelAndView shipment()
+	public ModelAndView shipment() throws FileNotFoundException, InternalServerError
 	{
 		ModelAndView modelAndView = null;
 		
@@ -139,7 +144,7 @@ public class AuthController
 	
 	//This method is used to redirect to createShipment Page
 	@GetMapping("/dashboard")
-	public ModelAndView dashboard()
+	public ModelAndView dashboard() throws FileNotFoundException, InternalServerError
 	{
 		ModelAndView modelAndView = null;
 		
