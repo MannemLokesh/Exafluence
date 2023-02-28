@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.exfscm.controller.AuthController;
 import com.exfscm.model.UserModel;
 import com.exfscm.repository.AuthRepository;
 import com.exfscm.service.AuthService;
@@ -64,6 +65,7 @@ public class AuthServiceImpl implements AuthService
 			//If the Password Entered by the User is Matched with Password in DB, Login Success.
 			if(isMatched)
 			{
+				AuthController.setUserName(loginModel.getUserName());
 				return "login success";
 			}
 			//If the Password Entered by the User is not Matched with Password in DB, Password is Incorrect.

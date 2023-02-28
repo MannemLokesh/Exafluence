@@ -9,7 +9,7 @@
  		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css'>
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css'>
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.css'>
-		<link rel="stylesheet" href="./style.css">
+		<link rel="stylesheet" href="./signup.css">
 		
 		<script>
 			function verify() 

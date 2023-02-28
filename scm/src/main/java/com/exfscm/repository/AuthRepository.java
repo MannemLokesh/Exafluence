@@ -6,5 +6,5 @@ import com.exfscm.model.UserModel;
 
 public interface AuthRepository extends MongoRepository<UserModel, String>
 {
-	String findByPassword(String email);
+	
 }

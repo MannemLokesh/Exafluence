@@ -15,6 +15,13 @@ import com.exfscm.service.AuthService;
 @Controller
 public class AuthController 
 {
+	private static String userName;
+	
+	public static void setUserName(String userName)
+	{
+		AuthController.userName=userName;
+	}
+	
 	@Autowired
 	private AuthService service;
 
@@ -71,9 +78,10 @@ public class AuthController
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			modelAndView = new ModelAndView();
+			modelAndView.setViewName("errorPage");
+			return modelAndView;
 		}
-		return modelAndView;
 	}
 
 	//This method will check the Credentials of User
@@ -95,6 +103,7 @@ public class AuthController
 			if(message.equals("login success"))
 			{
 				modelAndView.setViewName("dashboard");
+				modelAndView.addObject("name", userName);
 				return modelAndView;
 			}
 			//If the User Name is Not Exist in the DB, It will redirect to login Page with a message
@@ -114,9 +123,10 @@ public class AuthController
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			modelAndView = new ModelAndView();
+			modelAndView.setViewName("errorPage");
+			return modelAndView;
 		}
-		return modelAndView;
 	}
 	
 	//This method is used to redirect to createShipment Page
@@ -136,9 +146,10 @@ public class AuthController
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			modelAndView = new ModelAndView();
+			modelAndView.setViewName("errorPage");
+			return modelAndView;
 		}
-		return modelAndView;
 	}
 	
 	
@@ -159,9 +170,10 @@ public class AuthController
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			modelAndView = new ModelAndView();
+			modelAndView.setViewName("errorPage");
+			return modelAndView;
 		}
-		return modelAndView;
 	}
 
 	// postman testing

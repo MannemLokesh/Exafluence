@@ -26,9 +26,12 @@
 	crossorigin="anonymous"></script>
 
 <style>
+section{
+margin:auto;
+}
 body {
 	background-image:
-		url("https://voyagerww.com/wp-content/uploads/2021/04/Picture1_cr.jpg");
+		url(../createshipment.gif);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
@@ -58,8 +61,8 @@ h6 {
 	}
 </script>
 <body>
-	<h3
-		style="text-align: center; color: white; font-weight: bold; margin-top: 35px;">${message}</h3>
+<div class="section">
+	<h3 style="text-align: center; color: white; font-weight: bold; margin-top: 35px;">${message}</h3>
 	<form onsubmit="return verify()" method="post" action="createShipment">
 		<h3 id="msg" style="color: white; text-align: center;"></h3>
 		<div class="row justify-content-center m-auto p-2">
@@ -187,14 +190,15 @@ h6 {
 			</div>
 		</div>
 		<div class="d-grid gap-2 d-md-flex justify-content-md-center m-5">
-			<a class="btn btn-secondary me-md-2" type="reset" href="../dashboard">
-				Cancel Shipment </a>
+			<input class="btn btn-secondary me-md-2" type="reset" type="reset" value="Cancel Shipment">
+				
 			<button class="btn btn-primary" type="submit" value="Click">
 
 				Create Shipment</button>
 
 		</div>
 	</form>
+	</div>
 </body>
 
 </html>
