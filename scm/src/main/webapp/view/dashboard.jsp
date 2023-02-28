@@ -21,7 +21,7 @@
         }
         body{
             font-family: "Inter", sans-serif;
-            background-image: url(../5.gif);
+            background-image: url(../dashboard.gif);
             background-repeat: no-repeat;
             background-size: cover;
             background-size: fill;
