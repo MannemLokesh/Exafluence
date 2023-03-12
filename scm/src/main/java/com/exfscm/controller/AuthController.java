@@ -83,7 +83,7 @@ public class AuthController
 			return modelAndView;
 		}
 	}
-
+	
 	//This method will check the Credentials of User
 	@PostMapping("/login")
 	public ModelAndView isValidUser(UserModel userModel) throws FileNotFoundException, InternalServerError
@@ -128,6 +128,13 @@ public class AuthController
 			return modelAndView;
 		}
 	}
+//	@GetMapping("/loginerror")
+//	public ModelAndView loginerror()
+//	{
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.setViewName("login");
+//		return modelAndView;
+//	}
 	
 	//This method is used to redirect to createShipment Page
 	@GetMapping("/shipment")
@@ -176,6 +183,15 @@ public class AuthController
 		}
 	}
 
+//	@GetMapping("/login")
+//	public ModelAndView loginPage()
+//	{
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.setViewName("login");
+//		return modelAndView;
+//	}
+	
+	
 	// postman testing
 	// --------------------------------------
 	/*

@@ -6,5 +6,6 @@ import com.exfscm.model.UserModel;
 
 public interface AuthRepository extends MongoRepository<UserModel, String>
 {
-	
+//	UserModel findByEmail(String email);
+//	boolean existsByEmail(String email);
 }

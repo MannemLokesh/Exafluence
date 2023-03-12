@@ -41,17 +41,17 @@ public class ProducerConfiguration
 			while((line=input.readLine())!=null)
 			{
 				//Converting input data from String to JSONArray
-				JSONArray array = new JSONArray(line);
+				JSONArray jsonStreamDataArray = new JSONArray(line);
 
-				//Reading Each line From JSONArray
-				for(int i = 0; i < array.length(); i++) 
+				//Reading Each line From JSONStreamDataArray
+				for(int jsonStreamData = 0; jsonStreamData < jsonStreamDataArray.length(); jsonStreamData++) 
 				{
 					//Converting each line as JSONObject 
-					JSONObject object = array.getJSONObject(i);
+					JSONObject object = jsonStreamDataArray.getJSONObject(jsonStreamData);
 				
 					//Getting the KafkaTemplate and ProducerConfiguration form the method kafkaTemplate()
 					KafkaTemplate<String, String> kafkaTemplate = kafkaTemplate();
-					kafkaTemplate.send("Producer", object.toString());
+					kafkaTemplate.send(properties.getProperty("topic"), object.toString());
 				}
 			}
 		}
